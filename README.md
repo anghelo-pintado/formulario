@@ -1,54 +1,23 @@
-# React + TypeScript + Vite
+# Proyecto: Sistema de Mensajería Modularizado en React y TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto demuestra un sistema modularizado para enviar mensajes a candidatos. La aplicación permite seleccionar plantillas de mensaje, elegir canales (SMS, Correo electrónico y WhatsApp) y simular el envío de mensajes a múltiples candidatos. La simulación se realiza mostrando el payload en formato JSON en la consola.
 
-Currently, two official plugins are available:
+## Simulación del Envío al Backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+La función `sendMessages` en `src/services/messageService.ts` recibe un payload que incluye:
+- Tipo de plantilla.
+- Canales seleccionados.
+- Un arreglo de mensajes por candidato, en el cual cada objeto contiene el candidato y sus mensajes para cada canal.
 
-## Expanding the ESLint configuration
+El payload se imprime en la consola usando `JSON.stringify` con una indentación de 2 espacios para facilitar la lectura. Se simula un retardo (por ejemplo, 1 segundo) para emular una petición real.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Cómo Ejecutar el Proyecto
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Instalar Dependencias**  
+   Asegúrate de tener instaladas las dependencias necesarias. Ejecuta:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Ejecutar**  
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   npm run dev
